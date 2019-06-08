@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<div id="app">
+    <popup></popup>
+    <br>
+    <tooltip></tooltip>
+</div>
+
+<!--------------------------------------------------------------->
+<script src="../lib/vue.js"></script>
+<script>
+    let base = {
+        methods: {
+            show: function () {
+                this.visible = true;
+            },
+            hide: function () {
+                this.visible = false;
+            },
+            toggle: function () {
+                this.visible = !this.visible;
+            },
+        },
+        data: function () {
+            return {
+                visible: false,
+            }
+        }
+    };
+
+    Vue.component('tooltip', {
+        template: `
+                <div>
+                    <span @mouseenter="show" @mouseleave="hide">bys</span>
+                    <div v-if="visible">
+                        对于个人博客模板，我一直坚持这样一个原则，那就是不仅漂亮，而且代码要少！因为要做出精美的个人博客模板是需要大量的时间投入的，没有一个人可以轻而易举的搞定一套个人博客模板，尤其是针对性（或专业性）极强的模板，一份好的模板，要求其代码在精炼的同时还要漂亮，后期内容上了，还要利于网站收录。
+                        个人博客模板除了布局，颜色选择，图片修饰都是需要花时间和精力的，其实，制作博客模板最花时间的不是提炼代码，而是页面的排版设计，这里包含了多个方面，分别是排版、配色、图片，在处理这么多问题的同时还要求突出重点，确保每一页只有一个中心论点，这对于本身功底差的人来说是一件困难的事情！
+                    </div>
+                </div>
+            `,
+        mixins: [base]
+    });
+    Vue.component('popup', {
+        template: `
+                <div>
+                    <button @click="toggle">Popup</button>
+                    <div v-if="visible">
+                    <span @click="hide">X</span>
+                        <h4>title</h4>
+                        对于个人博客模板，我一直坚持这样一个原则，那就是不仅漂亮，而且代码要少！因为要做出精美的个人博客模板是需要大量的时间投入的，没有一个人可以轻而易举的搞定一套个人博客模板，尤其是针对性（或专业性）极强的模板，一份好的模板，要求其代码在精炼的同时还要漂亮，后期内容上了，还要利于网站收录。
+                        个人博客模板除了布局，颜色选择，图片修饰都是需要花时间和精力的，其实，制作博客模板最花时间的不是提炼代码，而是页面的排版设计，这里包含了多个方面，分别是排版、配色、图片，在处理这么多问题的同时还要求突出重点，确保每一页只有一个中心论点，这对于本身功底差的人来说是一件困难的事情！
+                    </div>
+                </div>
+            `,
+        mixins: [base],
+        data: function () {
+            return {
+                visible: true,
+            }
+        }
+    });
+    let app = new Vue({
+        el: '#app',
+        data: {
+            name: 'hah'
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-cn" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<div id="app">
+    <button v-on="{mouseenter: onEnter, mouseleave: onOut}" v-on:click="onClick" v-on:click="onAdd(2,3)">点我</button>
+    <br>
+    {{msg}}<br><br>
+    <button v-on:click="onAdd(2,3)">点我</button>
+    <br>
+    {{result}}<br><br>
+    <form v-on:keyup="keyUp" v-on:submit="onSubmit($event)">
+        <label>
+            <input type="text">
+        </label>
+        <input type="submit" value="提交">
+    </form>
+    <br>
+    按了 {{info}} 下键盘<br><br>
+    <form @keyup.q="isEnter">
+        <label>
+            <input type="text">
+        </label>
+    </form>
+</div>
+
+<!--------------------------------------------------------------->
+<script src="../lib/vue.js"></script>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            msg: '',
+            result: 0,
+            info: 0,
+        },
+        methods: {
+            onClick: function () {
+                this.msg = 'click';
+            },
+            onEnter: function () {
+                this.msg = 'enter';
+            },
+            onOut: function () {
+                this.msg = 'leave';
+            },
+            onAdd: function (a, b) {
+                this.result = a + b;
+            },
+            onSubmit: function (e) {
+                e.preventDefault();
+                alert("submit");
+            },
+            keyUp: function () {
+                this.info++;
+            },
+            isEnter: function (e) {
+                e.preventDefault();
+                alert("按了q键");
+            },
+        }
+    });
+</script>
+</body>
+</html>

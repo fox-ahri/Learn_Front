@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<div id="app">
+    <label>
+        男
+        <input v-model="sex1" value="male" type="radio">
+    </label>
+    <label>
+        女
+        <input v-model="sex1" value="female" type="radio">
+    </label><br>
+    {{sex1}}<br><br><br>
+    <label>
+        男
+        <input v-model="sex2" value="male" type="checkbox">
+    </label>
+    <label>
+        女
+        <input v-model="sex2" value="female" type="checkbox">
+    </label><br>
+    {{sex2}}<br><br><br>
+    <textarea v-model="article"></textarea><br><br><br>
+    <div>来自：</div>
+    <select v-model="from">
+        <option value="1">黑龙江</option>
+        <option value="2">吉林</option>
+        <option value="3">辽宁</option>
+    </select>
+    {{from}}<br><br><br>
+    <div>去哪：</div>
+    <select v-model="dest" multiple>
+        <option value="1">黑龙江</option>
+        <option value="2">吉林</option>
+        <option value="3">辽宁</option>
+    </select>
+    {{dest}}<br><br><br>
+</div>
+
+<!--------------------------------------------------------------->
+<script src="../lib/vue.js"></script>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            sex1: 'female',
+            sex2: ['male'],
+            article: 'loremgaeh',
+            from: 1,//1 2 3 ... null
+            dest: null,//1 2 3 ... null
+        }
+    });
+</script>
+</body>
+</html>

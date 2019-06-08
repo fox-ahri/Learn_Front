@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<div id="app">
+    <alert msg="nihao"></alert>
+</div>
+
+<!--------------------------------------------------------------->
+<script src="../lib/vue.js"></script>
+<script>
+    Vue.component('alert', {
+        template: '<button @click="on_click">点我</button>',
+        props: ['msg'],
+        methods: {
+            on_click: function () {
+                alert(this.msg);
+            }
+        }
+    });
+
+    new Vue({
+        el: '#app',
+    });
+</script>
+</body>
+</html>

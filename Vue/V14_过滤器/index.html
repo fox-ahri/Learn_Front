@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<div id="app">
+    <div>
+        <input v-model="price">
+        {{ price | currency('USD') }}
+    </div>
+    <hr>
+    <div>
+        <input v-model="length">
+        {{ length | meter }}
+    </div>
+</div>
+
+<!--------------------------------------------------------------->
+<script src="../lib/vue.js"></script>
+<script>
+    Vue.filter('currency', function (val, unit) {
+        val = val || 0;
+        unit = unit || '元';
+        return val + unit;
+    });
+    Vue.filter('meter', function (val, unit) {
+        val = val || 0;
+        unit = unit || 'm';
+        return (val / 1000).toFixed(2) + unit;
+    });
+    let app = new Vue({
+        el: '#app',
+        data: {
+            price: 10,
+            length: 10,
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model.lazy="msg1"><br>
+    <span>鼠标离开更新： {{ msg1 }}</span><br><br>
+    <input type="text" v-model.trim="msg2"><br>
+    <span><pre>去除空格： {{ msg2 }}</pre></span><br><br>
+    <input type="text" v-model.number="msg3"><br>
+    <span><pre>转成数字： {{ msg3 }}</pre></span><br><br>
+</div>
+
+<!--------------------------------------------------------------->
+<script src="../lib/vue.js"></script>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            msg1: 'haha',
+            msg2: 'haha',
+            msg3: 10,
+        }
+    });
+</script>
+</body>
+</html>

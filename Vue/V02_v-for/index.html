@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="food in foodList">{{food.name}}:￥{{food.discount?food.price * food.discount:food.price}}</li>
+    </ul>
+</div>
+
+<!--------------------------------------------------------------->
+<script src="../lib/vue.js"></script>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            foodList: [{
+                name: '葱',
+                price: 50,
+                discount: .8
+            }, {
+                name: '姜',
+                price: 20,
+                discount: .5
+            }, {
+                name: '蒜',
+                price: 30
+            },]
+        }
+    });
+</script>
+</body>
+</html>

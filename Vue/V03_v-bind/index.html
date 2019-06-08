@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-cn" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="../lib/bootstrap.min.css">
+    <style>
+        .active {
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <a v-bind:class="klass" v-bind:href="url">点我</a><br>
+    <a :class="{active:isActive}" v-bind:href="url">点我</a><br>
+    <img v-bind:src="pic" alt="" style="height: 200px"><br>
+    <img v-bind:src="img" alt=""><br>
+</div>
+
+<!--------------------------------------------------------------->
+<script src="../lib/vue.js"></script>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            url: 'http://baidu.com',
+            pic: '../lib/552724.jpg',
+            img: 'https://dummyimage.com/100x100/ffcc00/ffffff',
+            klass: 'btn btn-default',
+            isActive: false
+        }
+    });
+</script>
+</body>
+</html>

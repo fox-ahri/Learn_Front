@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<div id="app">
+    <person></person>
+    <people></people>
+</div>
+
+<!--------------------------------------------------------------->
+<script src="../lib/vue.js"></script>
+<script>
+    let Event = new Vue();
+
+    Vue.component('person', {
+        template: `
+                <div>
+                    person 说 <input @keyup="on_change" v-model="i_said"/>
+                </div>
+            `,
+        methods: {
+            on_change: function () {
+                Event.$emit('person-said-something', this.i_said);
+            }
+        },
+        data: function () {
+            return {
+                i_said: '',
+            }
+        },
+    });
+
+    Vue.component('people', {
+        template: `
+                <div>person 说了 {{person_said}}</div>
+            `,
+        data: function () {
+            return {
+                person_said: '',
+            }
+        },
+        mounted: function () {
+            let self = this;
+            Event.$on('person-said-something', function (data) {
+                self.person_said = data;
+            })
+        }
+    });
+
+    new Vue({
+        el: '#app',
+    });
+</script>
+</body>
+</html>

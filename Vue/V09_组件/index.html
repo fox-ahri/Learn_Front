@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<div id="seg1">
+    <alert></alert>
+</div>
+<div id="seg2">
+    <alert></alert>
+</div>
+
+<!--------------------------------------------------------------->
+<script src="../lib/vue.js"></script>
+<script>
+    let Alert = {
+        template: '<button @click="on_click">点我</button>',
+        methods: {
+            on_click: function () {
+                alert("hello");
+            }
+        }
+    };
+
+    new Vue({
+        el: '#seg1',
+        components: {
+            alert: Alert
+        }
+    });
+    new Vue({
+        el: '#seg2',
+    });
+</script>
+</body>
+</html>

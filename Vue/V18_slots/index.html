@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <style>
+        .panel {
+            max-width: 300px;
+            border: 1px solid #999;
+            margin-bottom: 15px;
+        }
+
+        .panel > * {
+            padding: 15px;
+        }
+
+        .panel .title {
+            border-bottom: 1px solid #999;
+        }
+
+        .panel .footer {
+            border-top: 1px solid #999;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <panel>
+        <div slot="title">title</div>
+        <div slot="content">content</div>
+    </panel>
+</div>
+<!--------------------------------------------------------------->
+<template id="panel-tpl">
+    <div class="panel">
+        <div class="title">
+            <slot name="title"></slot>
+        </div>
+        <div class="content">
+            <slot name="content"></slot>
+        </div>
+        <div class="footer">
+            <slot name="footer">更多信息</slot>
+        </div>
+    </div>
+</template>
+<!--------------------------------------------------------------->
+<script src="../lib/vue.js"></script>
+<script>
+    Vue.component('panel', {
+        template: '#panel-tpl',
+    });
+
+    let app = new Vue({
+        el: '#app',
+        data: {
+            name: 'hah'
+        }
+    });
+</script>
+</body>
+</html>
