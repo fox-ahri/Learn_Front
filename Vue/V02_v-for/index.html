@@ -5,6 +5,7 @@
     <title>Index</title>
 </head>
 <body>
+<h1>v-for</h1>
 <div id="app">
     <ul>
         <li v-for="food in foodList">{{food.name}}:￥{{food.discount?food.price * food.discount:food.price}}</li>
